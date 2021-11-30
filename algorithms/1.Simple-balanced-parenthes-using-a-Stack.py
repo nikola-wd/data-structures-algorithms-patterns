@@ -34,7 +34,7 @@ def parChecker(symbolString):
             else:
                 s.pop()
 
-        index = index + 1
+        index += 1
 
     if balanced and s.isEmpty():
         return True
