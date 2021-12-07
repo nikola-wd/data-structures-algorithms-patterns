@@ -72,6 +72,22 @@ class LinkedList {
     }
   }
 
+  // helper that's used for the stack
+  deleteHead() {
+    if (!this.head) {
+      return null;
+    }
+    const deletedItem = this.head;
+    if (this.head.next) {
+      this.head = this.head.next;
+    } else {
+      this.head = null;
+      this.tail = null;
+    }
+
+    return deletedItem;
+  }
+
   // helper
   toArray() {
     const elements = [];
@@ -83,6 +99,8 @@ class LinkedList {
     return elements;
   }
 }
+
+export { LinkedList };
 
 const ll = new LinkedList();
 ll.append(1);
