@@ -1,10 +1,5 @@
 // last in, first out
-
-// An arary is already a stack
-
-// last in, first out
-
-// An arary is already a stack
+// An array is already a stack
 
 // This is the implementation from scratch
 var Stack = function () {
