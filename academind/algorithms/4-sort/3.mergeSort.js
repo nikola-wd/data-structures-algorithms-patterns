@@ -1,5 +1,6 @@
 // Split the array multiple times until we have only 2-element arrays left (recursively, split in the mid)
 // -> Sort those arrays, and merge them back together
+// In all best, average and worst cases it's O(n * log n)
 function mergeSort(arr) {
   // base cases
   if (arr.length < 2) return arr;

@@ -2,6 +2,8 @@
 // bigger, smaller and equal than the pivot element. Repeat that
 // process for all chunks and concat the sorted chunks.
 // Pivot is ofter the first element
+// Worst case (items sorted already) - O(n^2)
+// Best and average - O (n * log n)
 function quickSort(arr) {
   const resArr = [...arr];
 
@@ -36,3 +38,6 @@ const sorted = quickSort([
   3, 10, -3, 48, 5, 33, 99, 101, 200, 301, 2, 1, 56, 78,
 ]);
 console.log(sorted);
+
+// Improved space time complexity qs:
+// https://github.com/trekhleb/javascript-algorithms/blob/master/src/algorithms/sorting/quick-sort/QuickSortInPlace.js
