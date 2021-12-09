@@ -53,3 +53,6 @@ const todoItems = [
 ];
 
 console.log(getPermutations(todoItems));
+
+// O (n!) - factorial complexity (worst complexity)
+// There is no better alternative to this algorithm
