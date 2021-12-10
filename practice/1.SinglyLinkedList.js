@@ -111,9 +111,28 @@ class LinkedList {
     this.size = +1;
   }
 
-  // TODO: findIndexByValue
+  // TODO: addAllAt index
 
-  // TODO: findNodeByIndex
+  // TODO: findIndexByValue
+  findIndexByValue(value) {
+    if (!this.head) {
+      throw new Error(`List is empty`);
+    }
+
+    let currentNode = this.head;
+    let currentIndex = 0;
+    while (currentNode) {
+      if (currentNode.data === value) {
+        return currentIndex;
+      }
+      currentNode = currentNode.next;
+      currentIndex++;
+    }
+
+    // If not found
+    return -1;
+  }
+
   findNodeByIndex(index) {
     if (index < 0 || index >= this.size) {
       throw new Error(`Specifiend index doesn't ${index} exist`);
@@ -274,5 +293,8 @@ console.log(ll.size);
 
 console.log(ll.getTail());
 
-console.log('Find by index: ');
-console.log(ll.findNodeByIndex(6));
+console.log('Find by index: 3');
+console.log(ll.findNodeByIndex(3));
+
+console.log('Find index by value: 23');
+console.log(ll.findIndexByValue(23));
