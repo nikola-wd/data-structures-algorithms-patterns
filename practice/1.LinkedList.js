@@ -79,6 +79,7 @@ class LinkedList {
     return head;
   }
 
+  // Removes tail element, and if there's only head left, remove head (Empty the list)
   removeLast() {
     if (!this.head) {
       throw new Error("List doesn't have any elements");
@@ -91,20 +92,72 @@ class LinkedList {
       this.setSize(-1);
       return head;
     }
-    let last = this.head;
-    let beforeLast = last;
+    let lastNode = this.head;
+    let nodeBeforeLastNode = lastNode;
     let index = 0;
-    // Find beforeLast and last
+    // Find nodeBeforeLastNode and lastNode
     while (index < this.size - 1) {
-      beforeLast = last;
-      last = last.next;
+      nodeBeforeLastNode = lastNode;
+      lastNode = lastNode.next;
       index++;
     }
     // Detach last element
-    beforeLast.next = null;
+    nodeBeforeLastNode.next = null;
     // Update size
     this.setSize(-1);
-    return last;
+    return lastNode;
+  }
+
+  // Remove at specified index
+  removeAtIndex(searchIndex) {
+    if (
+      searchIndex < 0 ||
+      this.size < searchIndex ||
+      searchIndex >= this.size ||
+      !this.head
+    ) {
+      throw new Error(`The ${searchIndex} position doesn't exist`);
+    }
+
+    let currentNode = this.head;
+    // If searched index is 0, then, the node to be deleted is the head node
+    // If it has next, update elements
+    // elf if not, remove head
+    if (searchIndex === 0) {
+      // currentNode is the head node
+      if (!currentNode.next) {
+        // remove head in this case
+        this.head = null;
+      } else {
+        this.head = currentNode.next;
+      }
+
+      this.setSize(-1);
+      currentNode.next = null;
+      return currentNode;
+    }
+
+    // searchedNode is not the head node -> drill down to find it
+    let nodeBeforeCurrentNode = currentNode;
+    let currIndex = 0;
+    while (currIndex < searchIndex) {
+      nodeBeforeCurrentNode = currentNode;
+      currentNode = currentNode.next;
+      currIndex++;
+    }
+
+    console.log('Found Node At Index: ', searchIndex);
+    console.log('Found Node: ', currentNode);
+    console.log('Node Before Found Node Node: ', nodeBeforeCurrentNode);
+
+    // In case the node to be deleted has next, assign that next to the previous node
+    // Actually we can just assign it in eather case, even if it's null
+    nodeBeforeCurrentNode.next = currentNode.next;
+    // remove next of foundNode before returning it
+    currentNode.next = null;
+    // Update the size
+    this.setSize(-1);
+    return currentNode;
   }
 
   // Insert after a given node
@@ -130,60 +183,18 @@ class LinkedList {
 
 // -------------------------
 const ll = new LinkedList();
-ll.print();
 ll.append(5);
 ll.append(3);
 ll.append(1);
 ll.prepend(0);
+ll.prepend(6);
+ll.append(10);
 ll.print();
-// ll.print();
-// console.log(ll.getSize);
-// console.log(ll.toArray());
-// console.log(JSON.stringify(ll.removeFirst(), null, 2));
-// console.log(ll.getSize);
-// console.log(ll.toArray());
-// ll.print();
-// ll.removeFirst();
-// ll.print();
-console.log('-----------------');
-console.log('Remove Last');
-console.log('prevSize: ', ll.getSize);
-console.log(ll.removeLast(), 'shouldBe: ', 1);
-console.log('newSize: ', ll.getSize);
 console.log(ll.toArray());
-
-ll.print();
-
-console.log('-----------------');
-console.log('Remove Last');
-console.log('prevSize: ', ll.getSize);
-console.log(ll.removeLast(), 'shouldBe: ', 3);
-console.log('newSize: ', ll.getSize);
-console.log(ll.toArray());
-
-ll.print();
-
-console.log('-----------------');
-console.log('Remove Last');
-console.log('prevSize: ', ll.getSize);
-console.log(ll.removeLast(), 'shouldBe: ', 5);
-console.log('newSize: ', ll.getSize);
-console.log(ll.toArray());
-ll.print();
-
-console.log('-----------------');
-console.log('Remove Last');
-console.log('prevSize: ', ll.getSize);
-console.log(ll.removeLast(), 'shouldBe: ', 0);
-console.log('newSize: ', ll.getSize);
-console.log(ll.toArray());
-
-console.log('-----------------');
-console.log('Should throw error:');
-try {
-  ll.removeLast();
-} catch (err) {
-  console.log(err.message);
-}
-console.log('newSize: ', ll.getSize);
-console.log(ll.toArray());
+console.log(ll.getSize);
+console.log(JSON.stringify(ll.removeFirst(), null, 2));
+console.log(ll.getSize);
+console.log('after delete: ', ll.toArray());
+ll.removeLast();
+console.log(ll.getSize);
+console.log('after delete: ', ll.toArray());
