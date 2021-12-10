@@ -313,85 +313,27 @@ class LinkedList {
 }
 
 // -------------------------
-const ll = new LinkedList();
+/* const ll = new LinkedList();
 ll.append(5);
 ll.append(3);
+
 ll.append(1);
 ll.prepend(0);
+
 ll.prepend(6);
-ll.append(10);
-// ll.print();
-// console.log(ll.toArray());
-// console.log(ll.size);
-// console.log(JSON.stringify(ll.removeFirst(), null, 2));
-// console.log(ll.size);
-// console.log('after delete: ', ll.toArray());
-// ll.removeLast();
-// console.log(ll.size);
-// console.log('after delete: ', ll.toArray());
+ll.prepend(8);
+ll.prepend(9);
 
-// TESTING ADDAT
-try {
-  ll.addAt(3, 23);
-} catch (err) {
-  console.log(err.message);
-}
-// ll.print();
-// console.log(ll.toArray());
-// console.log(ll.size);
-ll.append(3);
-ll.append(5);
+console.log(ll.size);
+console.log(ll.toArray());
+ll.print();
 
-// ll.print();
-// console.log(ll.toArray());
-// console.log(ll.size);
+// FIND MIDDLE OF A LINKED LIST
+// IF COUNT IS EVEN, return the second item
+// If we track count
+const midIndex = Math.floor(ll.size / 2);
+// Mid index
+console.log(ll.findNodeByIndex(midIndex));
+ */
 
-// console.log(ll.getTail());
-
-// console.log('Find by index: 3');
-// console.log(ll.findNodeByIndex(3));
-
-// console.log('Find index by value: 3');
-// console.log(ll.findIndexByValue(3));
-
-// ll.print();
-// console.log(ll.toArray());
-// console.log(ll.size);
-
-console.log('removeByVal: ', ll.removeByValue(23));
-
-// console.log('------ BEFORE PREPEND ARRAY --------');
-// ll.print();
-// console.log(ll.toArray());
-// console.log(ll.size);
-// ll.prependAll([
-//   'prepend 21',
-//   'prepend 22',
-//   'prepend 23',
-//   'prepend 24',
-//   'prepend 25',
-// ]);
-// ll.print();
-// console.log(ll.toArray());
-// console.log(ll.size);
-// console.log('------ AFTER PREPEND ARRAY --------');
-
-// console.log('------ BEFORE APPEND ARRAY --------');
-// ll.print();
-// console.log(ll.toArray());
-// console.log(ll.size);
-// ll.appendAll(['APPEND 21', 'APPEND 22', 'APPEND 23', 'APPEND 24', 'APPEND 25']);
-// ll.print();
-// console.log(ll.toArray());
-// console.log(ll.size);
-// console.log('------ AFTER APPEND ARRAY --------');
-
-// console.log('------ BEFORE ADD ALL AT ARRAY --------');
-// ll.print();
-// console.log(ll.toArray());
-// console.log(ll.size);
-// ll.addAllAt(4, ['allAt 31', 'allAt 32', 'allAt 33', 'allAt 34', 'allAt 35']);
-// ll.print();
-// console.log(ll.toArray());
-// console.log(ll.size);
-// console.log('------ AFTER ADD ALL AT ARRAY --------');
+export default LinkedList;
