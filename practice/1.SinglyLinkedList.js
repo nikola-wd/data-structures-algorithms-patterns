@@ -111,6 +111,14 @@ class LinkedList {
     this.size = +1;
   }
 
+  // Prepends more items at once
+  prependAll(valuesArray) {
+    const coppiedArr = [...valuesArray];
+    while (coppiedArr.length) {
+      this.prepend(coppiedArr.pop());
+    }
+  }
+
   // TODO: addAllAt index
 
   findIndexByValue(value) {
@@ -322,6 +330,22 @@ console.log(ll.size);
 
 console.log('removeByVal: ', ll.removeByValue(23));
 
-// ll.print();
+console.log('------ BEFORE PREPEND ARRAY --------');
+ll.print();
 console.log(ll.toArray());
 console.log(ll.size);
+ll.prependAll([
+  'prepend 21',
+  'prepend 22',
+  'prepend 23',
+  'prepend 24',
+  'prepend 25',
+  'prepend 26',
+  'prepend 27',
+  'prepend 28',
+  'prepend 29',
+]);
+ll.print();
+console.log(ll.toArray());
+console.log(ll.size);
+console.log('------ AFTER PREPEND ARRAY --------');
