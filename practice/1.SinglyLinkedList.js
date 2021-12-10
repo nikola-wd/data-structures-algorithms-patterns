@@ -113,7 +113,6 @@ class LinkedList {
 
   // TODO: addAllAt index
 
-  // TODO: findIndexByValue
   findIndexByValue(value) {
     if (!this.head) {
       throw new Error(`List is empty`);
@@ -163,7 +162,7 @@ class LinkedList {
 
   // Removes tail element, and if there's only head left, remove head (Empty the list)
   removeLast() {
-    if (!this.head) {
+    if (!this.head || this.size === 0) {
       throw new Error("List doesn't have any elements");
     }
 
@@ -196,9 +195,10 @@ class LinkedList {
       searchIndex < 0 ||
       this.size < searchIndex ||
       searchIndex >= this.size ||
-      !this.head
+      !this.head ||
+      this.size === 0
     ) {
-      throw new Error(`The ${searchIndex} position doesn't exist`);
+      return false;
     }
 
     let currentNode = this.head;
@@ -228,10 +228,6 @@ class LinkedList {
       currIndex++;
     }
 
-    console.log('Found Node At Index: ', searchIndex);
-    console.log('Found Node: ', currentNode);
-    console.log('Node Before Found Node Node: ', nodeBeforeCurrentNode);
-
     // In case the node to be deleted has next, assign that next to the previous node
     // Actually we can just assign it in eather case, even if it's null
     nodeBeforeCurrentNode.next = currentNode.next;
@@ -243,7 +239,22 @@ class LinkedList {
   }
 
   // TODO: remove If we find the the first node with the matching value (data)
-  removeByValue(value) {}
+  removeByValue(value) {
+    if (!this.head || this.size === 0) {
+      throw new Error('List is empty');
+    }
+
+    if (this.head.data === value) {
+      return this.removeFirst();
+    }
+
+    const foundIndex = this.findIndexByValue(value);
+    if (foundIndex === -1) {
+      return false;
+    } else {
+      return this.removeAtIndex(foundIndex);
+    }
+  }
 
   // Helper to print the values
   toArray() {
@@ -271,9 +282,9 @@ ll.append(1);
 ll.prepend(0);
 ll.prepend(6);
 ll.append(10);
-ll.print();
-console.log(ll.toArray());
-console.log(ll.size);
+// ll.print();
+// console.log(ll.toArray());
+// console.log(ll.size);
 // console.log(JSON.stringify(ll.removeFirst(), null, 2));
 // console.log(ll.size);
 // console.log('after delete: ', ll.toArray());
@@ -287,14 +298,30 @@ try {
 } catch (err) {
   console.log(err.message);
 }
+// ll.print();
+// console.log(ll.toArray());
+// console.log(ll.size);
+ll.append(3);
+ll.append(5);
+
+// ll.print();
+// console.log(ll.toArray());
+// console.log(ll.size);
+
+// console.log(ll.getTail());
+
+// console.log('Find by index: 3');
+// console.log(ll.findNodeByIndex(3));
+
+// console.log('Find index by value: 3');
+// console.log(ll.findIndexByValue(3));
+
 ll.print();
 console.log(ll.toArray());
 console.log(ll.size);
 
-console.log(ll.getTail());
+console.log('removeByVal: ', ll.removeByValue(23));
 
-console.log('Find by index: 3');
-console.log(ll.findNodeByIndex(3));
-
-console.log('Find index by value: 23');
-console.log(ll.findIndexByValue(23));
+// ll.print();
+console.log(ll.toArray());
+console.log(ll.size);
