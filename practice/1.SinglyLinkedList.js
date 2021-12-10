@@ -11,23 +11,36 @@ class Node {
 // If we have a tail pointer -> then append() is O(1), else it's O(n)
 class LinkedList {
   constructor() {
-    this.size = 0;
+    this.length = 0;
     this.head = null;
   }
 
-  get getSize() {
-    return this.size;
+  get size() {
+    return this.length;
   }
 
-  setSize(val) {
-    this.size += val;
+  set size(val) {
+    this.length += val;
   }
 
   getHead() {
     return this.head;
   }
 
-  // getTail
+  // getTail node
+  getTail() {
+    let currentNode = this.head;
+
+    if (!currentNode) {
+      throw new Error('List is empty');
+    }
+
+    while (currentNode.next) {
+      currentNode = currentNode.next;
+    }
+
+    return currentNode;
+  }
 
   // Adds at the end of the list
   append(data) {
@@ -38,7 +51,7 @@ class LinkedList {
       // O(1)
       this.head = newNode;
       // Keep track of size
-      this.setSize(1);
+      this.size = +1;
       return;
     }
     // Traverse till the last node
@@ -51,7 +64,7 @@ class LinkedList {
     last.next = newNode;
 
     // Keep track of size
-    this.setSize(1);
+    this.size = +1;
   }
 
   // Adds at the front of the list
@@ -65,11 +78,11 @@ class LinkedList {
       this.head = newNode;
     }
     // Keep track of size
-    this.setSize(1);
+    this.size = +1;
   }
 
-  // TODO: Insert at a given index
   addAt(index, data) {
+    // o(n)
     const newNode = new Node(data);
     let currentNode = this.head;
 
@@ -93,18 +106,28 @@ class LinkedList {
       }
       newNode.next = currentNode;
       previousNode.next = newNode;
-      console.log(`addAt: currentIndex: ${currentIndex}, index: ${index}`);
-      console.log(
-        `addAt: prevNode: ${previousNode.data}, currentNode: ${currentNode.data}`
-      );
     }
     // Keep track of size
-    this.setSize(1);
+    this.size = +1;
   }
 
   // TODO: findIndexByValue
 
-  // TODO: findValueByIndex
+  // TODO: findNodeByIndex
+  findNodeByIndex(index) {
+    if (index < 0 || index >= this.size) {
+      throw new Error(`Specifiend index doesn't ${index} exist`);
+    }
+
+    let currentNode = this.head;
+    let currentIndex = 0;
+    while (currentIndex < index) {
+      currentNode = currentNode.next;
+      currentIndex++;
+    }
+
+    return currentNode;
+  }
 
   // Removes the head element and returns it
   removeFirst() {
@@ -115,7 +138,7 @@ class LinkedList {
     this.head = head.next;
 
     head.next = null;
-    this.setSize(-1);
+    this.size = -1;
     return head;
   }
 
@@ -129,7 +152,7 @@ class LinkedList {
     if (!this.head.next) {
       const head = this.head;
       this.head = null;
-      this.setSize(-1);
+      this.size = -1;
       return head;
     }
     let lastNode = this.head;
@@ -144,7 +167,7 @@ class LinkedList {
     // Detach last element
     nodeBeforeLastNode.next = null;
     // Update size
-    this.setSize(-1);
+    this.size = -1;
     return lastNode;
   }
 
@@ -172,7 +195,7 @@ class LinkedList {
         this.head = currentNode.next;
       }
 
-      this.setSize(-1);
+      this.size = -1;
       currentNode.next = null;
       return currentNode;
     }
@@ -196,7 +219,7 @@ class LinkedList {
     // remove next of foundNode before returning it
     currentNode.next = null;
     // Update the size
-    this.setSize(-1);
+    this.size = -1;
     return currentNode;
   }
 
@@ -231,12 +254,12 @@ ll.prepend(6);
 ll.append(10);
 ll.print();
 console.log(ll.toArray());
-console.log(ll.getSize);
+console.log(ll.size);
 // console.log(JSON.stringify(ll.removeFirst(), null, 2));
-// console.log(ll.getSize);
+// console.log(ll.size);
 // console.log('after delete: ', ll.toArray());
 // ll.removeLast();
-// console.log(ll.getSize);
+// console.log(ll.size);
 // console.log('after delete: ', ll.toArray());
 
 // TESTING ADDAT
@@ -245,3 +268,11 @@ try {
 } catch (err) {
   console.log(err.message);
 }
+ll.print();
+console.log(ll.toArray());
+console.log(ll.size);
+
+console.log(ll.getTail());
+
+console.log('Find by index: ');
+console.log(ll.findNodeByIndex(6));
