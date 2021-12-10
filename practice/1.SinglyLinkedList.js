@@ -1,3 +1,5 @@
+// SINGLY LINKED LIST -----------------------------------
+
 class Node {
   constructor(data) {
     this.data = data;
@@ -65,6 +67,44 @@ class LinkedList {
     // Keep track of size
     this.setSize(1);
   }
+
+  // TODO: Insert at a given index
+  addAt(index, data) {
+    const newNode = new Node(data);
+    let currentNode = this.head;
+
+    if (index < 0 || index >= this.size) {
+      throw new Error(
+        `Either index doesn't exist or we can't add at ${index} index`
+      );
+    }
+
+    if (index === 0) {
+      // add in front of the current head
+      newNode.next = currentNode;
+      this.head = newNode;
+    } else {
+      let currentIndex = 0;
+      let previousNode;
+      while (currentIndex < index) {
+        previousNode = currentNode;
+        currentNode = currentNode.next;
+        currentIndex++;
+      }
+      newNode.next = currentNode;
+      previousNode.next = newNode;
+      console.log(`addAt: currentIndex: ${currentIndex}, index: ${index}`);
+      console.log(
+        `addAt: prevNode: ${previousNode.data}, currentNode: ${currentNode.data}`
+      );
+    }
+    // Keep track of size
+    this.setSize(1);
+  }
+
+  // TODO: findIndexByValue
+
+  // TODO: findValueByIndex
 
   // Removes the head element and returns it
   removeFirst() {
@@ -160,8 +200,8 @@ class LinkedList {
     return currentNode;
   }
 
-  // Insert after a given node
-  insertAfter(data, afterData) {}
+  // TODO: remove If we find the the first node with the matching value (data)
+  removeByValue(value) {}
 
   // Helper to print the values
   toArray() {
@@ -192,9 +232,16 @@ ll.append(10);
 ll.print();
 console.log(ll.toArray());
 console.log(ll.getSize);
-console.log(JSON.stringify(ll.removeFirst(), null, 2));
-console.log(ll.getSize);
-console.log('after delete: ', ll.toArray());
-ll.removeLast();
-console.log(ll.getSize);
-console.log('after delete: ', ll.toArray());
+// console.log(JSON.stringify(ll.removeFirst(), null, 2));
+// console.log(ll.getSize);
+// console.log('after delete: ', ll.toArray());
+// ll.removeLast();
+// console.log(ll.getSize);
+// console.log('after delete: ', ll.toArray());
+
+// TESTING ADDAT
+try {
+  ll.addAt(3, 23);
+} catch (err) {
+  console.log(err.message);
+}

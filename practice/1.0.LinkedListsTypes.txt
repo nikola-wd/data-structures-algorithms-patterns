@@ -1,0 +1,4 @@
+1. SinglyLinkedList
+2. DoublyLinkedList
+3. Circular Linked List
+4. Doubly Circular Linked List
