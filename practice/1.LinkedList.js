@@ -25,6 +25,8 @@ class LinkedList {
     return this.head;
   }
 
+  // getTail
+
   // Adds at the end of the list
   append(data) {
     const newNode = new Node(data);
@@ -64,21 +66,60 @@ class LinkedList {
     this.setSize(1);
   }
 
-  // Helper to print the values
-  toArray() {
+  // Removes the head element and returns it
+  removeFirst() {
+    if (!this.head) {
+      throw new Error("List doesn't have any elements");
+    }
+    const head = this.head;
+    this.head = head.next;
+
+    head.next = null;
+    this.setSize(-1);
+    return head;
+  }
+
+  removeLast() {
+    if (!this.head) {
+      throw new Error("List doesn't have any elements");
+    }
+
+    // Remove head in this case, since we don't have any last elements after it
+    if (!this.head.next) {
+      const head = this.head;
+      this.head = null;
+      this.setSize(-1);
+      return head;
+    }
+    let last = this.head;
+    let beforeLast = last;
     let index = 0;
-    let currentNode = this.head;
-    const tempArr = [];
-    while (index < this.size) {
-      tempArr.push(currentNode.data);
-      currentNode = currentNode.next;
+    // Find beforeLast and last
+    while (index < this.size - 1) {
+      beforeLast = last;
+      last = last.next;
       index++;
     }
-    return tempArr;
+    // Detach last element
+    beforeLast.next = null;
+    // Update size
+    this.setSize(-1);
+    return last;
   }
 
   // Insert after a given node
   insertAfter(data, afterData) {}
+
+  // Helper to print the values
+  toArray() {
+    let currentNode = this.head;
+    const tempDataArr = [];
+    while (currentNode) {
+      tempDataArr.push(currentNode.data);
+      currentNode = currentNode.next;
+    }
+    return tempDataArr;
+  }
 
   // Print the whole list starting from head
   print() {
@@ -93,8 +134,56 @@ ll.print();
 ll.append(5);
 ll.append(3);
 ll.append(1);
-ll.print();
 ll.prepend(0);
 ll.print();
-console.log(ll.getSize);
+// ll.print();
+// console.log(ll.getSize);
+// console.log(ll.toArray());
+// console.log(JSON.stringify(ll.removeFirst(), null, 2));
+// console.log(ll.getSize);
+// console.log(ll.toArray());
+// ll.print();
+// ll.removeFirst();
+// ll.print();
+console.log('-----------------');
+console.log('Remove Last');
+console.log('prevSize: ', ll.getSize);
+console.log(ll.removeLast(), 'shouldBe: ', 1);
+console.log('newSize: ', ll.getSize);
+console.log(ll.toArray());
+
+ll.print();
+
+console.log('-----------------');
+console.log('Remove Last');
+console.log('prevSize: ', ll.getSize);
+console.log(ll.removeLast(), 'shouldBe: ', 3);
+console.log('newSize: ', ll.getSize);
+console.log(ll.toArray());
+
+ll.print();
+
+console.log('-----------------');
+console.log('Remove Last');
+console.log('prevSize: ', ll.getSize);
+console.log(ll.removeLast(), 'shouldBe: ', 5);
+console.log('newSize: ', ll.getSize);
+console.log(ll.toArray());
+ll.print();
+
+console.log('-----------------');
+console.log('Remove Last');
+console.log('prevSize: ', ll.getSize);
+console.log(ll.removeLast(), 'shouldBe: ', 0);
+console.log('newSize: ', ll.getSize);
+console.log(ll.toArray());
+
+console.log('-----------------');
+console.log('Should throw error:');
+try {
+  ll.removeLast();
+} catch (err) {
+  console.log(err.message);
+}
+console.log('newSize: ', ll.getSize);
 console.log(ll.toArray());
