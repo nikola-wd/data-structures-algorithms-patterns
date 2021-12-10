@@ -67,6 +67,14 @@ class LinkedList {
     this.size = +1;
   }
 
+  // Appends more items at once
+  appendAll(valuesArray) {
+    const coppiedArr = [...valuesArray];
+    while (coppiedArr.length) {
+      this.append(coppiedArr.shift());
+    }
+  }
+
   // Adds at the front of the list
   prepend(data) {
     // O(1)
@@ -81,6 +89,15 @@ class LinkedList {
     this.size = +1;
   }
 
+  // Prepends more items at once
+  prependAll(valuesArray) {
+    const coppiedArr = [...valuesArray];
+    while (coppiedArr.length) {
+      this.prepend(coppiedArr.pop());
+    }
+  }
+
+  // Adds one item at a specified position
   addAt(index, data) {
     // o(n)
     const newNode = new Node(data);
@@ -111,15 +128,13 @@ class LinkedList {
     this.size = +1;
   }
 
-  // Prepends more items at once
-  prependAll(valuesArray) {
+  // Adds more items at once at a specified index
+  addAllAt(index, valuesArray) {
     const coppiedArr = [...valuesArray];
     while (coppiedArr.length) {
-      this.prepend(coppiedArr.pop());
+      this.addAt(index, coppiedArr.shift());
     }
   }
-
-  // TODO: addAllAt index
 
   findIndexByValue(value) {
     if (!this.head) {
@@ -246,7 +261,7 @@ class LinkedList {
     return currentNode;
   }
 
-  // TODO: remove If we find the the first node with the matching value (data)
+  // remove If we find the the first node with the matching value (data)
   removeByValue(value) {
     if (!this.head || this.size === 0) {
       throw new Error('List is empty');
@@ -262,6 +277,21 @@ class LinkedList {
     } else {
       return this.removeAtIndex(foundIndex);
     }
+  }
+
+  // Empty the whole list
+  clear() {
+    this.length = 0;
+    this.head = null;
+  }
+
+  // Returns a shallow copy of the list
+  clone() {
+    const clonned = new LinkedList();
+    const originalValuesArr = [...this.toArray()];
+    clonned.prependAll(originalValuesArr);
+
+    return clonned;
   }
 
   // Helper to print the values
@@ -324,28 +354,44 @@ ll.append(5);
 // console.log('Find index by value: 3');
 // console.log(ll.findIndexByValue(3));
 
-ll.print();
-console.log(ll.toArray());
-console.log(ll.size);
+// ll.print();
+// console.log(ll.toArray());
+// console.log(ll.size);
 
 console.log('removeByVal: ', ll.removeByValue(23));
 
-console.log('------ BEFORE PREPEND ARRAY --------');
-ll.print();
-console.log(ll.toArray());
-console.log(ll.size);
-ll.prependAll([
-  'prepend 21',
-  'prepend 22',
-  'prepend 23',
-  'prepend 24',
-  'prepend 25',
-  'prepend 26',
-  'prepend 27',
-  'prepend 28',
-  'prepend 29',
-]);
-ll.print();
-console.log(ll.toArray());
-console.log(ll.size);
-console.log('------ AFTER PREPEND ARRAY --------');
+// console.log('------ BEFORE PREPEND ARRAY --------');
+// ll.print();
+// console.log(ll.toArray());
+// console.log(ll.size);
+// ll.prependAll([
+//   'prepend 21',
+//   'prepend 22',
+//   'prepend 23',
+//   'prepend 24',
+//   'prepend 25',
+// ]);
+// ll.print();
+// console.log(ll.toArray());
+// console.log(ll.size);
+// console.log('------ AFTER PREPEND ARRAY --------');
+
+// console.log('------ BEFORE APPEND ARRAY --------');
+// ll.print();
+// console.log(ll.toArray());
+// console.log(ll.size);
+// ll.appendAll(['APPEND 21', 'APPEND 22', 'APPEND 23', 'APPEND 24', 'APPEND 25']);
+// ll.print();
+// console.log(ll.toArray());
+// console.log(ll.size);
+// console.log('------ AFTER APPEND ARRAY --------');
+
+// console.log('------ BEFORE ADD ALL AT ARRAY --------');
+// ll.print();
+// console.log(ll.toArray());
+// console.log(ll.size);
+// ll.addAllAt(4, ['allAt 31', 'allAt 32', 'allAt 33', 'allAt 34', 'allAt 35']);
+// ll.print();
+// console.log(ll.toArray());
+// console.log(ll.size);
+// console.log('------ AFTER ADD ALL AT ARRAY --------');
