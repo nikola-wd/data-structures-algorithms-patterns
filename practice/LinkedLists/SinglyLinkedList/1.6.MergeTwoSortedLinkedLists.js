@@ -74,6 +74,19 @@ function sortedMerge(headA, headB) {
 // If you are trying to build up a list at its tail,
 // either the dummy node or the struct node** “reference”
 // strategy can be used.
+
+function MoveNode(destRef, sourceRef) {
+  // if the source list empty, do nothing
+  if (sourceRef === null) {
+    return;
+  }
+
+  let newNode = sourceRef; // the front source node
+  sourceRef = sourceRef.next; // advance the source pointer
+  newNode.next = destRef; // link the old dest off the new node
+  destRef = newNode; // move dest to point to the new node
+}
+
 function sortedMerge2(a, b) {
   let result = null;
   // point to the last result pointer
@@ -91,7 +104,7 @@ function sortedMerge2(a, b) {
     }
 
     if (a.data <= b.data) {
-      // TODO: define MoveNode
+      // TODO: define MoveNode (defined, but test if it works)
       MoveNode(lastPtrRef, a);
     } else {
       MoveNode(lastPtrRef, b);
