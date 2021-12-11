@@ -111,6 +111,7 @@ class LinkedList {
 
     if (index === 0) {
       // add in front of the current head
+      // O(1)
       newNode.next = currentNode;
       this.head = newNode;
     } else {
@@ -337,3 +338,4 @@ console.log(ll.findNodeByIndex(midIndex));
  */
 
 export default LinkedList;
+export { Node };
