@@ -1,0 +1,50 @@
+1. sorting algos
+2. array problems
+3. string problems
+4. stack problems
+5. hashtable problems
+6. queue problems
+7. deque problems
+
+8. recursion
+
+9. linked lists
+
+10. trees
+
+11. heaps
+
+12. graphs
+
+
+
+13. js unary & bitwise operators and scenarios where they are useful
+
+14. patterns
+
+15. git learn in depth
+
+16. MySQL learn in depth
+
+15. SOLID
+
+16. Owasp
+
+17. Different auth options
+
+18. AWS/CI/CD
+
+
+... Books, Youtube videos, lectures, learn more about CS
+
+
+
+Sites for practicing & learning:
+1. Pythonds
+2. GeeksForGeeks
+3. LeetCode
+4. CodeWars
+5. TopCoder
+6. HackerRank
+7. CodeChef
+8. Spoj

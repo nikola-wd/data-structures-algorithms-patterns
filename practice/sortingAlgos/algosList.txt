@@ -1,0 +1,7 @@
+1. bubbleSort
+2. quickSort
+3. mergeSort
+4. insectionSort
+5. selectionSort
+6. radixSort
+7. shellSort
