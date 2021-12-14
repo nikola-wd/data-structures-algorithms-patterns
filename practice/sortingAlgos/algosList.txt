@@ -5,7 +5,7 @@
 4. insectionSort
 5. selectionSort
 6. radixSort
-7. shellSort
+7. shellSort (diminishing increment sort)
 8. gnomeSort ?
 9. coctailShakerSort (variation of bubbleSort: also known as: Bidirectional Bubble Sort or simply Cocktail Sort.) ? - https://stackabuse.com/bubble-sort-and-cocktail-shaker-sort-in-javascript/
 10. heapSort - https://stackabuse.com/heap-sort-in-javascript/

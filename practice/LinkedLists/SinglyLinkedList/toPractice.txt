@@ -1,0 +1,8 @@
+1. 3-Way QuickSort (Dutch National Flag)
+Link: https://www.geeksforgeeks.org/3-way-quicksort-dutch-national-flag/
+
+2. Check if Singlt LL is a palindrome
+Link: https://www.geeksforgeeks.org/function-to-check-if-a-singly-linked-list-is-palindrome/
+
+3. Alternating split of a given Singly Linked List | Set 1
+Link: https://www.geeksforgeeks.org/alternating-split-of-a-given-singly-linked-list/?ref=lbp
