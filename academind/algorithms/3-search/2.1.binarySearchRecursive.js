@@ -15,4 +15,21 @@ function binarySearchRecursive(arr, el, offset) {
   return binarySearchRecursive(arr.slice(start, end + 1), el, offset);
 }
 
+// https://stackoverflow.com/questions/22697936/binary-search-in-javascript
+// function binarySearch(arr, val, start = 0, end = arr.length - 1) {
+//   const mid = Math.floor((start + end) / 2);
+
+//   if (val === arr[mid]) {
+//     return mid;
+//   }
+
+//   if (start >= end) {
+//     return -1;
+//   }
+
+//   return val < arr[mid]
+//     ? binarySearch(arr, val, start, mid - 1)
+//     : binarySearch(arr, val, mid + 1, end);
+// }
+
 console.log(binarySearchRecursive([-3, -2, -1, 0, 3, 5, 7, 8, 9], 7, 0));
