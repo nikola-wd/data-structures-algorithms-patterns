@@ -36,3 +36,11 @@ function rotateArrByOneMethod2(arr) {
     i++;
   }
 }
+
+// ------------------------------
+
+function rotateByK(arr, k) {
+  for (let i = 0; i < k; i++) {
+    rotateArrByOne(arr);
+  }
+}
