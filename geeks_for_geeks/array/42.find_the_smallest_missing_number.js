@@ -49,6 +49,7 @@ function printFirstMissingNumberLinear(arr, n, m) {
 // 2) Else, get the middle index mid
 // 2.1) If arr[mid] greater than mid, then the required el lies in left half
 // 2.2) Else, the required el lies in right half
+// TC: O(log n)
 function printFirstMissingNumberBinaryModified(array, start, end) {
   if (start > end) return end + 1;
 
