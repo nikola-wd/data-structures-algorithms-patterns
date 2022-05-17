@@ -1,6 +1,6 @@
 // My solution
 // function isPrime(n) {
-//   if (n % 2 === 0) return false;
+//   if ((n % 2 === 0 && n !== 2) || n <= 1) return false;
 
 //   const dividers = [2, 3, 5, 7];
 //   if (dividers.indexOf(n) !== -1) return true;

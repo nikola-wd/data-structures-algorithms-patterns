@@ -46,7 +46,7 @@ console.log(aList);
 // ---------------------------------------------------------------
 
 // XXX: geeks for geeks JS
-// XXX: 187 steps on pythonTutor
+// XXX: 187 steps on pythonTutor (better implementation)
 function g4gShellSort(arr) {
   let n = arr.length;
 
